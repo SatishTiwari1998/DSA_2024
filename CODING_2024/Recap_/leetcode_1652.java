@@ -1,0 +1,71 @@
+import java.util.*;
+public class leetcode_1652 {
+
+	public static void main(String[] args) {
+		
+		int arr[]=new int[] {5,7,1,4};
+		int ans[]=decrypt(arr,-3);
+		
+
+	}
+	
+	 public static int[] decrypt(int[] code, int k) {
+
+	        if(k==0){
+	            int ans[]=new int[code.length];
+	            return ans;
+	        }
+	        else if(k>0){
+	            int ans[]=new int[code.length+k];
+	            int index=0;
+	            
+	            //Create a circular array
+	            for(int i=0;i<code.length;i++){
+	                ans[index++]=code[i];   
+	            }
+	            for(int i=0;i<k;i++){
+	                ans[index++]=code[i];
+	            }
+	            
+	            // Actual Logic
+	            
+	            for(int i=0;i<code.length;i++) {
+	            	int sum=0;
+	            	for(int j=i+1;j<=i+k;j++) {
+	            		sum+=ans[j];	
+	            	}
+	            	code[i]=sum;
+	            }
+	            
+	            System.out.println(Arrays.toString(ans));
+	            System.out.println(Arrays.toString(code));
+	        }
+	        else {
+                k=k*(-1);
+                int ans[]=new int[code.length+k];
+                int index=0;
+                for(int i=code.length-k;i<=code.length-1;i++) {
+                    ans[index++]=code[i];
+                }
+                for(int i=0;i<code.length;i++) {
+                    ans[index++]=code[i];
+                }
+                
+                for(int i=k;i<ans.length;i++) {
+                    int sum=0;
+                    for(int j=i-k;j<=i-1;j++) {
+                        sum+=ans[j];    
+                    }
+                    code[i-k]=sum;
+                }
+                
+                System.out.println(Arrays.toString(ans));
+                System.out.println(Arrays.toString(code));
+                
+            }
+            
+            return code;
+	        
+	    }
+	 
+}

@@ -1,0 +1,53 @@
+import java.util.*;
+public class deleteGreatestValue {
+
+	public static void main(String[] args) {
+		int grid[][]={{58,42,8,75,28},{35,21,13,21,72}};
+		System.out.println("INPUT GRID:");
+		printMatrix(grid);
+	    System.out.println("The Sum Obtained: "+ deleteGreatestValue(grid));
+
+	}
+	
+	
+	  public static int deleteGreatestValue(int[][] grid) {
+	    PriorityQueue<Integer> pq = new PriorityQueue<Integer>(Collections.reverseOrder());
+	    int sum=0;
+	    int columns=grid[0].length;
+	    int row_index=0;
+	    int col_index=0;
+
+	    while(columns>0){
+	        for(int i=0;i<grid.length;i++){
+	            int rowMax=0;
+	            for(int j=0;j<grid[i].length;j++){
+	                if(grid[i][j]>rowMax){
+	                    rowMax=grid[i][j];
+	                    row_index=i;
+	                    col_index=j;
+
+	                }
+	            }
+	            pq.add(rowMax);
+	            grid[row_index][col_index]=0;
+	        }
+	        sum+=pq.poll();
+	        pq.clear();
+	        columns--;
+	    }
+	    return sum;
+	    
+	    }
+	  
+	  
+	  public static void printMatrix(int matrix[][]) {
+		  for(int i=0;i<matrix.length;i++) {
+			  for(int j=0;j<matrix[i].length;j++) {
+				  
+				  System.out.print(matrix[i][j]+" ");
+				  
+			  }
+			  System.out.println();
+		  }
+	  }
+}
