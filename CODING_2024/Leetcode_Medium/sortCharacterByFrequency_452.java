@@ -1,0 +1,42 @@
+import java.util.*;
+
+public class sortCharacterByFrequency_452 {
+
+	public static void main(String[] args) {
+		
+		String str="mississippi";
+		
+		System.out.println(frequencySort(str));
+	}
+	
+	 public static String frequencySort(String s) {
+	        HashMap<Character,Integer> map=new HashMap<>();
+	        for(char c:s.toCharArray()) {
+	        	map.put(c,map.getOrDefault(c,0)+1);
+	        }
+	        
+	        PriorityQueue<Character> pq=new PriorityQueue<Character>((a,b)->map.get(b)-map.get(a));
+	        
+	        for(char c:map.keySet()) {
+	        	pq.add(c);
+	        }
+	        
+	        StringBuilder sb=new StringBuilder();
+	        
+	        while(!pq.isEmpty()) {
+	        	char c=pq.poll();
+	        	for(int i=0;i<map.get(c);i++) {
+	        		sb.append(c);
+	        	}
+	        }
+	        
+	        return sb.toString();
+	        
+//	        System.out.println(pq);
+//	        
+//	        System.out.println(map);  
+	    }
+	
+	
+
+}
