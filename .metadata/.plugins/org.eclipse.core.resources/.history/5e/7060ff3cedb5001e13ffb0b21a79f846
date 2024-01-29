@@ -1,0 +1,43 @@
+import java.util.*;
+public class playerWithZeroOrOneLoss_2225 {
+
+	public static void main(String[] args) {
+		
+		int matches[][]=new int[][] {{1,3},{2,3},{3,6},{5,6},{5,7},{4,5},{4,8},{4,9},{10,4},{10,9}};
+		
+		findWinners(matches);
+		
+
+	}
+	
+    public static void findWinners(int[][] matches) {
+
+        HashMap<Integer,Integer> winners=new HashMap<Integer,Integer>();
+        HashMap<Integer,Integer> losers=new HashMap<Integer,Integer>();
+        List<List<Integer>> res=List.of(List.of(1,2));
+        
+        for(int[] match:matches) {
+        	int winner=match[0];
+        	int loser=match[1];
+        	
+        	winners.put(winner,winners.getOrDefault(winner, 0)+1);
+        	losers.put(loser, losers.getOrDefault(loser, 0)+1);
+        	
+        }
+        
+        System.out.println(winners);
+        System.out.println(losers);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+       
+        
+    }
+
+}

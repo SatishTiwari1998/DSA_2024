@@ -8,5 +8,6 @@
 	<classpathentry kind="src" path="Utility_Snippets"/>
 	<classpathentry kind="src" path="Recap_Basics"/>
 	<classpathentry kind="src" path="Leetcode_Medium"/>
+	<classpathentry kind="src" path="PlayGround"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
